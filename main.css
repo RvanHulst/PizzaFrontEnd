@@ -1,0 +1,24 @@
+.grid-container {
+  display: grid;
+  grid-template-areas: 'item1 item2 item3 item4';
+  grid-gap: 1px;
+  background-color: #2196F3;
+  width:  75%;
+  float: left;
+}
+
+.grid-container > div {
+    background-color: rgba(255, 255, 255, 0.8);
+    text-align: center;
+    padding: 100px 0;
+    font-size: 30px;
+    
+}
+#rightContainer {
+    background-color:white;
+    text-align: center;
+    padding: 100px 0;
+    font-size: 30px;
+    height: 739px;
+}
+
