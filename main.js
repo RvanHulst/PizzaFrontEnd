@@ -1,25 +1,21 @@
-var pizzanames = ["Pizza Margarita", "Pizza Napoletana", "Pizza Kiwi", "Pizza Hawaii"]
-// de container waar alles in gaat
-var gridContainer = document.getElementsByClassName("grid-container");
-// de for loop wat elke item aanmaakt
-for (i = 0; i <= 3; i++) {
-    // waar je de elementen eerst aanmaakt
-    var item = document.createElement("div");
-    var p = document.createElement("p");
-    var image = document.createElement("img");
-    var button = document.createElement("button");
-    var br = document.createElement("br");
+//index <3
+const pizza1 = document.getElementById("pizza1");
+const pizza2 = document.getElementById("pizza2");
+const pizza3 = document.getElementById("pizza3");
+const pizza4 = document.getElementById("pizza4");
+const pizza5 = document.getElementById("pizza5");
 
-    p.innerHTML = pizzanames[i];
-    button.innerHTML = "add " + pizzanames[i];
+pizza1.addEventListener{() => {
+    displayPizza(0);
+}
+}
+//add pizza
+const addPizza_title = document.getElementById("addP_title");
+const addPizza_image = document.getElementById("addP_image");
+const addPizza_description = document.getElementById("addP_description");
 
-    image.src = "img/pizza" + (i+1) + ".jpg";
-    image.style.width ="180px";
-
-
-    gridContainer[0].appendChild(item);
-    item.appendChild(p);
-    item.appendChild(image);
-    item.appendChild(br);
-    item.appendChild(button);
+function displayPizza(pizza_id) {
+    addPizza_title = pizzas[pizza_id].name;
+    addPizza_image = pizzas[pizza_id].img;
+    addPizza_description = pizzas[pizza_id].description;
 }
