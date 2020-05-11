@@ -5,17 +5,42 @@ const pizza3 = document.getElementById("pizza3");
 const pizza4 = document.getElementById("pizza4");
 const pizza5 = document.getElementById("pizza5");
 
-pizza1.addEventListener{() => {
-    displayPizza(0);
+const pizzaarray = [
+    { "name": pizza1, "ingredients": [ "tomaat", "mozzarella", "basilicum" ] },
+    { "name": pizza2, "ingredients": [ "tomaat", "knoflook", "olie", "oregano"] },
+    { "name": pizza3, "ingredients": [ "gorgonzola", "mozzarella", "pecorino", "taleggio"] },
+    { "name": pizza4, "ingredients": [ "tomaat", "mozzarella", "paprika", "gegrilde courgette", "gegrilde aubergine"] },
+    { "name": pizza5, "ingredients": [ "tomaat", "mozzarella", "ham", "champignons", "olijven", "artisjokken"] }
+];
+
+//add click function to all pizzas
+for (let i= 0; i < pizzaarray.length; i++) {
+    pizzaarray[i].name.addEventListener('click', function(){
+        displayPizza(i);
+        createcheckbox();
+    }); 
 }
-}
+
 //add pizza
+const overviewtoggle = document.getElementById("overview")
+const addPizza_container = document.getElementById("addpizza");
 const addPizza_title = document.getElementById("addP_title");
-const addPizza_image = document.getElementById("addP_image");
+const addPizza_image = document.getElementById("addP_image");   
 const addPizza_description = document.getElementById("addP_description");
 
+//turns off main container and displays sec container
 function displayPizza(pizza_id) {
-    addPizza_title = pizzas[pizza_id].name;
-    addPizza_image = pizzas[pizza_id].img;
-    addPizza_description = pizzas[pizza_id].description;
+    overviewtoggle.style.display = "none";
+    addPizza_container.style.display = "block";
+    addPizza_title.innerHTML = pizzas[pizza_id].name;
+    addPizza_image.src = pizzas[pizza_id].img;
+    addPizza_description.innerHTML = pizzas[pizza_id].description;
 }
+ function createcheckbox(){
+    var box = document.createElement("input");
+    var label = document.createElement("label")
+    box.type = "checkbox";
+    label.innerHTML = "test";
+    addPizza_container.appendChild(box);
+    addPizza_container.appendChild(label);
+ }
