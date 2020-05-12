@@ -17,7 +17,7 @@ const pizzaarray = [
 for (let i= 0; i < pizzaarray.length; i++) {
     pizzaarray[i].name.addEventListener('click', function(){
         displayPizza(i);
-        createcheckbox();
+        createcheckbox(i);
     }); 
 }
 
@@ -36,11 +36,14 @@ function displayPizza(pizza_id) {
     addPizza_image.src = pizzas[pizza_id].img;
     addPizza_description.innerHTML = pizzas[pizza_id].description;
 }
- function createcheckbox(){
-    var box = document.createElement("input");
-    var label = document.createElement("label")
-    box.type = "checkbox";
-    label.innerHTML = "test";
-    addPizza_container.appendChild(box);
-    addPizza_container.appendChild(label);
+ function createcheckbox(pizza_id){
+    for (let b = 0; b <  pizzaarray[pizza_id].ingredients.length; b++) {
+        var box = document.createElement("input");
+        var label = document.createElement("label")
+        box.type = "checkbox";
+        box.checked = "true";
+        label.innerHTML =  pizzaarray[pizza_id].ingredients[b] ;
+        addPizza_container.appendChild(box);
+        addPizza_container.appendChild(label);
+    }
  }
