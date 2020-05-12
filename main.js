@@ -27,7 +27,7 @@ const addPizza_container = document.getElementById("addpizza");
 const addPizza_title = document.getElementById("addP_title");
 const addPizza_image = document.getElementById("addP_image");   
 const addPizza_description = document.getElementById("addP_description");
-
+const price = document.getElementById("addP_price");
 //turns off main container and displays sec container
 function displayPizza(pizza_id) {
     overviewtoggle.style.display = "none";
@@ -35,15 +35,35 @@ function displayPizza(pizza_id) {
     addPizza_title.innerHTML = pizzas[pizza_id].name;
     addPizza_image.src = pizzas[pizza_id].img;
     addPizza_description.innerHTML = pizzas[pizza_id].description;
+    price.innerHTML = "price: \u20ac" + pizzas[pizza_id].price + ",-";
 }
- function createcheckbox(pizza_id){
+
+//makes a checkbox with the length of the ingredients 
+function createcheckbox(pizza_id){
+ prijs = pizzas[pizza_id].price;
     for (let b = 0; b <  pizzaarray[pizza_id].ingredients.length; b++) {
         var box = document.createElement("input");
         var label = document.createElement("label")
         box.type = "checkbox";
-        box.checked = "true";
-        label.innerHTML =  pizzaarray[pizza_id].ingredients[b] ;
+        label.innerHTML =  pizzaarray[pizza_id].ingredients[b];
+
+        box.addEventListener('click',  function(){calculate_prijs()});
+
         addPizza_container.appendChild(box);
         addPizza_container.appendChild(label);
     }
- }
+}
+
+//The target event property returns the element that triggered the event. found it on internet
+function calculate_prijs(){
+    var box = event.target;
+
+    if (box.checked == true) {
+        prijs = prijs + 0.50;
+        price.innerHTML = "price: \u20ac" + prijs + ",-";
+    }
+    else if (box.checked == false) {
+        prijs = prijs - 0.50;
+        price.innerHTML = "price: \u20ac" + prijs + ",-";
+    }
+}  
